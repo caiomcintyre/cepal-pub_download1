@@ -149,8 +149,13 @@ class Publication(models.Model):
     id_dspace = models.ForeignKey(Dspace, on_delete=models.CASCADE, null=True)
     tfile = models.CharField(max_length=200)
 
+    @property
+    def extension(self):
+        extension = self.tfile.split('.')[-1]
+        return extension
+
     class Meta:
-        ordering = ["id_dspace", "tfile"]
+        ordering = ["id_dspace", "tfile", "extension"]
         unique_together = ("id_dspace", "tfile")
 
     def __str__(self):
