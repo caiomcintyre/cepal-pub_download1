@@ -77,6 +77,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #   'SECRET_TOKEN': '',
 #   'SERVER_URL': 'http://kibanapro-q.cepal.org:8200',
 # }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5d79cb02b26d3cc99588135a685711b9a3383e69
 # 'django.template.context_processors.debug',
 # 'django.template.context_processors.request',
 # 'django.contrib.auth.context_processors.auth',
@@ -98,9 +102,14 @@ TEMPLATES = [
                 'django.template.context_processors.request'
 
             ],
+            'libraries':{
+                'my_templatetag': 'gug.templatestags.calcs',
+            }
         },
-    },
+    }
+    
 ]
+
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -276,7 +285,11 @@ DECIMAL_SEPARATOR = ','
 STATIC_ROOT = '/var/www/pub_static/'
 STATIC_URL = '/static/'
 GRAPPELLI_ADMIN_TITLE = 'UWEB'
+<<<<<<< HEAD
 ###
+=======
+##
+>>>>>>> 5d79cb02b26d3cc99588135a685711b9a3383e69
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
