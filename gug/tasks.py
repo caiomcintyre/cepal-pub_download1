@@ -75,7 +75,7 @@ def get_GA(header=False):
                 # print(max_prev)
                 print(gs.service.max_month_before)
                 print('max_prev > period.end_date', max_prev, ' > ' , period.end_date)
-                continue
+                # continue
             else:
                 print('Obteniendo')
 
@@ -307,19 +307,16 @@ def clean_title(title):
     
 
 def save_record(gs, period, url, title, cantidad, workareas=None):
-    #print(gs.id, period.id, url, title, cantidad)
-    # n_url = url.split('?')[0]
-    # n_url = n_url.replace('http://', '')
-    # n_url = n_url.replace('https://', '')
-    # n_url = n_url.replace('repositorio.cepal.org', '')
-    # n_url = n_url.replace('/bitstream', '')
-    # n_url = n_url.replace('/handle', '')
-    # n_url = n_url.replace('/id/', '')
-    # n_url = n_url.replace('/11362/', '')
     n_url = clean_url(url)
 
     id_dspace = n_url.split("/")[0]
     file = n_url.split("/")[-1]
+    ###
+    if len(file) > 200:
+        print(file)
+        file = file[:195] + '.' + str(define_extension(file))
+    
+    ###
     title = str(title)
     title = title[:599]
     title = clean_title(title)
@@ -342,6 +339,7 @@ def save_record(gs, period, url, title, cantidad, workareas=None):
             dsp.save()
 
         ext = define_extension(file)
+        
 
         try:
             pub = Publication.objects.get(id_dspace=dsp, tfile=file)

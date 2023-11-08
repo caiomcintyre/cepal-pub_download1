@@ -8,7 +8,8 @@ def running_total(fine_list, column):
 
 	total = 0
 	for d in fine_list:
-		total = total + d.get(column) 
+		if d.get(column) is not None:
+			total = total + d.get(column) 
 	return total
 
 register.filter('running_total', running_total)
